@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chanie Ejercito| Web Developer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #FFDBDB;
+      color: #333;
+      line-height: 1.6;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+
+
+    header.hero {
+      background: #F6D6D6;
+      color: #333;
+      padding: 2em;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      scroll-snap-align: start;
+      gap: 3em;
+    }
+
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+
+    .hero-content h1 {
+      font-size: 80px;
+      margin-bottom: 0.2em;
+      line-height: 1.1;
+    }
+
+
+    .hero-content p {
+      font-size: 3em;
+      margin-top: 0;
+      line-height: 1.2;
+    }
+
+
+    .profile-pic {
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+    }
+
+
+    .highlight {
+      color: #b30000;
+    }
+
+
+    nav {
+      position: fixed;
+      top: 2em;
+      right: 2em;
+      z-index: 1000;
+    }
+
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5em;
+    }
+
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5em 1em;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      background-color: #B33791;
+    }
+
+
+    nav a:hover {
+      background-color: #C562AF;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+
+    .section {
+      padding: 3em 2em;
+      max-width: 900px;
+      margin: auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      scroll-snap-align: start;
+    }
+
+
+    .about-section {
+      min-height: 70vh;
+      justify-content: flex-start;
+      padding-top: 5em;
+    }
+
+
+    .about-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
+
+
+    .about-section > p {
+      font-size: 25px;
+      line-height: 1.6;
+      margin-bottom: 2em;
+      text-align: justify;
+    }
+
+
+    .about-boxes-container {
+      display: flex;
+      justify-content: space-around;
+      gap: 1.5em;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 1em;
+    }
+
+
+    .about-box {
+      flex: 1;
+      min-width: 250px;
+      background: #FFDBDB;
+      padding: 1.5em;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      border: 1px solid #e0e0e0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+
+    .about-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+
+    .about-box h3 {
+      color: #B33791;
+      margin-bottom: 0.5em;
+      font-size: 1.4em;
+    }
+
+
+    .about-box p {
+      font-size: 0.95em;
+      line-height: 1.5;
+      color: #555;
+      text-align: justify;
+    }
+
+
+    .education-list {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.2em 0.5em;
+      text-align: left;
+      margin: 0 auto;
+      max-width: fit-content;
+    }
+
+
+    .education-list strong {
+      font-weight: bold;
+    }
+
+
+    .skills-list {
+      list-style-position: inside;
+      text-align: left;
+      padding-left: 0;
+      margin: 0 auto;
+      margin-top: 1em;
+      max-width: fit-content;
+      line-height: 1.6;
+      display: table;
+    }
+
+
+    .skills-list li {
+      margin-bottom: 0.5em;
+      padding: 0;
+    }
+
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5em;
+      margin-top: 1em;
+    }
+
+
+    .projects-grid div {
+      padding: 2.5em;
+      background: #FFE8CD;
+      border-radius: 15px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+
+    .projects-grid div:hover {
+      transform: scale(1.02);
+    }
+
+
+    .project-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1em;
+    }
+
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      max-width: 400px;
+      margin: auto;
+    }
+
+
+    /* Contact Me section specific styles */
+    #projects h2,
+    #contact h2 {
+      font-size: 2.5em; /* Matches the font-size of About Me heading */
+      text-align: center; /* Centers the heading */
+      margin-bottom: 0.5em; /* Adjust as needed for spacing, matching About Me */
+    }
+
+
+    input, textarea {
+      padding: 1.2em; /* Increased padding */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1.1em; /* Increased font size for input text */
+    }
+
+
+    button {
+      background: #B33791;
+      color: white;
+      font-weight: bold;
+      padding: 1.2em; /* Increased padding */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 1.2em; /* Increased font size for button text */
+    }
+
+
+    button:hover {
+      background: #C562AF;
+    }
+
+
+    footer {
+      text-align: center;
+      padding: 1.5em;
+      background: #f0f0f0;
+      font-size: 0.9em;
+      min-height: 10vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      scroll-snap-align: end;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" id="home">
+    <img src="https://scontent.fdgt1-1.fna.fbcdn.net/v/t39.30808-6/484384983_957498346578370_5631786123265956398_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeEJHaWuJ_GxWdnyYVQO1XZH0oM6W0j5FF_SgzpbSPkUX0DsRabDz4Jj9abdvWCGC90RJsOZDb_FBIKV2-PBFYGw&_nc_ohc=ez77kU-50U4Q7kNvwEY8bcN&_nc_oc=AdkCnd8A7GPwpp1u3VD1Wv2BVB8VuCzo2Iv6BXa339FfrL1QmC3CKT2kmldVd3ZcLbY&_nc_zt=23&_nc_ht=scontent.fdgt1-1.fna&_nc_gid=BDrOtHKo_URrWGpKe6UuZw&oh=00_AfPw-WH8IRGCdlvWvQdaNLMVbOfNVPW-Jcm3oI2334K_CQ&oe=6855A523" class="profile-pic" />
+    <div class="hero-content">
+      <h1>Hi, I'm <span class="highlight">Chanie Ejercito</span></h1>
+      <p>Creative Web Developer | Designer | Problem Solver</p>
+    </div>
+  </header>
+
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <main>
+    <section id="about" class="section about-section">
+      <h2>About Me</h2>
+      <p>
+        As an IT student, I'm focused on front-end web development. I love bringing ideas to life with HTML, CSS, and JavaScript, aiming to create engaging user experiences and solve practical challenges through code.
+      </p>
+      <div class="about-boxes-container">
+        <div class="about-box">
+          <h3>Educational Background</h3>
+          <div class="education-list">
+            <strong>College:</strong> <span>Asian College - Dumaguete Campus</span>
+            <strong>Senior High:</strong> <span>Negros Oriental High School</span>
+            <strong>Elementary:</strong> <span>Magsaysay Memorial Elementary School</span>
+          </div>
+        </div>
+        <div class="about-box">
+          <h3>Soft Skills</h3>
+          <ul class="skills-list">
+            <li>Problem-Solving</li>
+            <li>Adaptability</li>
+            <li>Teamwork</li>
+            <li>Communication</li>
+            <li>Attention to Detail</li>
+            <li>Time Management</li>
+          </ul>
+        </div>
+        <div class="about-box">
+          <h3>Experience</h3>
+          <p>My OJT at WorkPad (WrkPod) was a practical dive into virtual assistance, where I gained hands-on experience supporting clients remotely and mastering essential digital tools for efficient task management.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div id="project-list" class="projects-grid"></div>
+    </section>
+
+
+    <section id="contact" class="section">
+      <h2>Contact Me</h2>
+      <form id="contact-form">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <input type="message" placeholder="Your Message" required />
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+
+  <footer>
+    <p>© 2025 Chanie. All rights reserved.</p>
+  </footer>
+
+
+  <script>
+    const projects = [
+      {
+        title: "Nail Salon Poster",
+        description: "A promotional poster designed for a nail salon using Canva. Services include Manicure, Pedicure, Nail paint, and Acrylic Nails.",
+        image: "https://scontent.fdgt1-1.fna.fbcdn.net/v/t39.30808-6/508139046_1026992616295609_4957183947538661932_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFswvqh4dLwCyCL5kd0dKLh5OulLJZjJ_Tk66UslmMn9IJ5l91obLmFf20HOJ_nXAG815txW5Vf0DdLTHZJHH99&_nc_ohc=IQR4MZtWfGAQ7kNvwFW-oi_&_nc_oc=Adl-wahhfR6sfX6gu_BvjBNbsmVK3ha9srK0ePVvhC2aOsvHi0raTJuOYl4ZtJkDPpk&_nc_zt=23&_nc_ht=scontent.fdgt1-1.fna&_nc_gid=Q6F-jvaKF1OG6VK6GxdgTQ&oh=00_AfMKWGncAZuDemPZCeRo7PlyeV699wsZ9D-6kBGbFwwARw&oe=6855AB25",
+        href: null
+      },
+      {
+        title: "Mobile App Prototype",
+        description: "A Figma prototype showcasing user flow and UI design for a mobile application, including screens for login, registration, and recipe display.",
+        image: "https://scontent.fdgt1-1.fna.fbcdn.net/v/t39.30808-6/508166235_1026992672962270_1291645133693345877_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFU5TUQTAfRrcCYhKvr26yslPGpDtrjKAuU8akO2uMoC4PttImm5NZP91l5QLEvOMql8t14i-jgWWHY3R1gEY-N&_nc_ohc=U00QBsuTT3sQ7kNvwHWAbNA&_nc_oc=AdkvZrJRzU5VKod-UADjklkflkGfZnzEPxTkLBVpqKrwlWpoUhrXiiTc7nRq_3J5yyc&_nc_zt=23&_nc_ht=scontent.fdgt1-1.fna&_nc_gid=aRNQli6QWjLfB0BZR2ReTg&oh=00_AfMfqCC_ZpoNbHI39ZzqyIpeCBDx3E9lVRy4moR8NUSyJg&oe=6855B6E2",
+        href: "https://www.figma.com/design/ooRCr91mjGp2M55ArF6rv2/Untitled?node-id=0-1&t=zMXlztLTDos34OQt-1&authuser=1"
+      },
+      {
+        title: "Food Brochure Design",
+        description: "A tri-fold brochure created in Photopea for a culinary event, inviting to 'Elevate Your Taste Buds' and a 'Delightful Food Journey'.",
+        image: "https://scontent.fdgt1-1.fna.fbcdn.net/v/t39.30808-6/508386536_1026992722962265_8352535392167583386_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEvYHNUBwVirrE0ayAsKcU3KKp36eeQP5Eoqnfp55A_kdYExhKbFyx73BcI5l60AC8PewDOOPjPfRdnuIdVL-YA&_nc_ohc=68ektdyo4egQ7kNvwGT7wUt&_nc_oc=Adkou9Q1lVpMonm7NkCGZ36LfSY4qeg7kj6G318mAszZrXKurfdd42cG2xhf-5_fLPw&_nc_zt=23&_nc_ht=scontent.fdgt1-1.fna&_nc_gid=UdhSYcBJ5Coj7KQF9odP_g&oh=00_AfNuLR7ksEq2jwknfy9moM9y7AJ-ZbBjnifdMqE2xPUnXw&oe=6855B342",
+        href: null
+      },
+
+
+    ];
+
+
+    const projectList = document.getElementById("project-list");
+
+
+    // Clear any existing static project content from the HTML
+    projectList.innerHTML = '';
+
+
+    projects.forEach(project => {
+      const div = document.createElement("div");
+
+
+      // If there's an href, create an anchor tag around the image and title
+      if (project.href) {
+        div.innerHTML = `
+          <a href="${project.href}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+            <img src="${project.image}" alt="${project.title}" class="project-img" />
+            <h3>${project.title}</h3>
+          </a>
+          <p>${project.description}</p>
+        `;
+      } else {
+        div.innerHTML = `
+          <img src="${project.image}" alt="${project.title}" class="project-img" />
+          <h3>${project.title}</h3>
+          <p>${project.description}</p>
+        `;
+      }
+      projectList.appendChild(div);
+    });
+
+
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Thanks for reaching out! Chanie will get back to you soon.");
+    });
+  </script>
+</body>
+</html>
+
